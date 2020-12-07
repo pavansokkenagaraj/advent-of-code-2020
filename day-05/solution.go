@@ -22,7 +22,7 @@ func main() {
 	for scanner.Scan() {
 		text := scanner.Text()
 		seats = append(seats, text)
-		}
+	}
 	err = file.Close()
 	check(err)
 
@@ -30,11 +30,11 @@ func main() {
 	part2(seatIDs)
 }
 
-func part1(seats []string)[]int  {
+func part1(seats []string) []int {
 
-	maxID:=0
+	maxID := 0
 	var seatIDs []int
-	for _,seat:= range seats{
+	for _, seat := range seats {
 		row := 0
 		rp := 64
 
@@ -43,7 +43,7 @@ func part1(seats []string)[]int  {
 		for _, char := range seat {
 			switch char {
 			case 'F':
-				rp/=2
+				rp /= 2
 				break
 			case 'B':
 				row += rp
@@ -58,9 +58,9 @@ func part1(seats []string)[]int  {
 				break
 			}
 		}
-		seatID := row*8+col
+		seatID := row*8 + col
 		seatIDs = append(seatIDs, seatID)
-		if seatID > maxID{
+		if seatID > maxID {
 			maxID = seatID
 		}
 	}
@@ -70,7 +70,7 @@ func part1(seats []string)[]int  {
 
 func part2(seatIDs []int) {
 	sort.Ints(seatIDs)
-	for i := range seatIDs{
+	for i := range seatIDs {
 		if seatIDs[i+1] != seatIDs[i]+1 {
 			fmt.Printf("solution part 1: my seatID = %v\n", seatIDs[i]+1)
 			break
